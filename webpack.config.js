@@ -10,8 +10,17 @@ if (process.env.NODE_ENV === "production") {
 module.exports = {
     mode: mode,
 
+    output: {
+        assetModuleFilename: "images/[hash][ext][query]",
+        clean: true
+    },
+
     module: {
         rules: [
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset',
+            },
             {
                 test: /\.(s[ac]|c)ss$/i,
                 use: [
